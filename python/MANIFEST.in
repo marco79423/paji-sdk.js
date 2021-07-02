@@ -1,2 +1,0 @@
-recursive-exclude paji_sdk *_test.py
-recursive-include paji_sdk *.pyi

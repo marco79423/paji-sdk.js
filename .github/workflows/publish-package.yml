@@ -1,4 +1,4 @@
-name: Publish JavaScript Package
+name: Publish Package
 
 on:
   push:
@@ -19,11 +19,9 @@ jobs:
           node-version: 14.x
 
       - name: 安裝套件
-        working-directory: ./js
         run: npm install
 
       - name: 建置套件
-        working-directory: ./js
         run: npm run build
 
       - name: 發布 Release
@@ -31,13 +29,13 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            js/cjs/*
-            js/esm/*
-            js/umd/*
+            cjs/*
+            esm/*
+            umd/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: JS-DevTools/npm-publish@v1
         with:
-          package: js/package.json
+          package: package.json
           token: ${{ secrets.NPM_TOKEN }}
