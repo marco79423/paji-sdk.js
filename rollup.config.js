@@ -20,6 +20,7 @@ export default [
     input: {
       index: 'src/index.js',
       elements: 'src/elements/index.js',
+      'css-helpers': 'src/css-helpers/index.js',
       utils: 'src/utils/index.js',
     },
     external: [
