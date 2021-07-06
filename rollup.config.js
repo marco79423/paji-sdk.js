@@ -21,6 +21,7 @@ export default [
       index: 'src/index.js',
       elements: 'src/elements/index.js',
       'css-helpers': 'src/css-helpers/index.js',
+      nats: 'src/nats/index.js',
       utils: 'src/utils/index.js',
     },
     external: [
