@@ -12,7 +12,7 @@ export default [
     },
     plugins: [
       babel({
-        babelHelpers: 'bundled',
+        babelHelpers: 'runtime',
       }),
     ]
   },
@@ -40,7 +40,7 @@ export default [
     ],
     plugins: [
       babel({
-        babelHelpers: 'bundled',
+        babelHelpers: 'runtime',
       }),
     ]
   }
