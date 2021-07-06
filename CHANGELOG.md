@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [0.4.0] - 2021-07-06
+
+* 新增 nats
+* 新增 sleep 函式
+
 ## [0.3.1] - 2021-07-05
 
 * 新增 hideScrollbar
