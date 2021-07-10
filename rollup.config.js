@@ -1,47 +1,42 @@
 import babel from '@rollup/plugin-babel'
+import typescript from '@rollup/plugin-typescript'
+import dts from 'rollup-plugin-dts'
+import {DEFAULT_EXTENSIONS} from '@babel/core'
+
+import pkg from './package.json'
 
 export default [
-  // browser-friendly UMD build
   {
-    input: 'src/index.js',
-    output: {
-      file: 'umd/paji-sdk.js',
-      format: 'umd',
-      name: 'paji-sdk',
-      esModule: false
-    },
+    input: 'src/index.ts',
+    output: [
+      {file: pkg.main, format: 'umd', name: 'paji-sdk', sourcemap: true, esModule: false},
+      {file: pkg.module, format: 'esm', sourcemap: true},
+    ],
+
     plugins: [
       babel({
-        babelHelpers: 'runtime',
+        babelHelpers: 'bundled',
+        extensions: [
+          ...DEFAULT_EXTENSIONS,
+          '.ts',
+          '.tsx'
+        ]
+      }),
+      typescript({
+        declaration: true,
       }),
     ]
   },
   {
-    input: {
-      index: 'src/index.js',
-      elements: 'src/elements/index.js',
-      'css-helpers': 'src/css-helpers/index.js',
-      nats: 'src/nats/index.js',
-      utils: 'src/utils/index.js',
-    },
-    external: [
-      'react',
-      'next/dynamic',
-    ],
+    input: 'src/index.ts',
     output: [
       {
-        dir: 'esm',
-        format: 'esm',
-      },
-      {
-        dir: 'cjs',
-        format: 'cjs'
+        file: pkg.typings,
+        format: 'esm'
       }
     ],
     plugins: [
-      babel({
-        babelHelpers: 'runtime',
-      }),
-    ]
-  }
+      dts(),
+    ],
+  },
 ]

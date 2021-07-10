@@ -1,5 +1,5 @@
-export const DEFAULT_LENGTH = 6
-export const DEFAULT_CHARSET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+const DEFAULT_LENGTH = 6
+const DEFAULT_CHARSET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 
 /**
  * 產生随機亂數
