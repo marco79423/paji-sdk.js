@@ -10,17 +10,10 @@ npm install paji-sdk
 
 ## 使用
 
-(方法參考至： [Code-splitting for libraries—bundling for npm with Rollup 1.0](https://levelup.gitconnected.com/code-splitting-for-libraries-bundling-for-npm-with-rollup-1-0-2522c7437697) )
-
 ```javascript
-// 直接引用
-import {generateRandomString} from 'paji-sdk'
+import {utils} from 'paji-sdk'
 
-// 引用模組 (CommonJS)
-import {generateRandomString} from 'paji-sdk/cjs/utils'
-
-// 引用模組 (ESM)
-import {generateRandomString} from 'paji-sdk/ems/utils'
+const id = utils.generateRandomString()
 ```
 
 ## 功能模組
