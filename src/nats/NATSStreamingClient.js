@@ -10,6 +10,17 @@ const DEFAULT_OPTIONS = {
   logger: new Logger()
 }
 
+/**
+ * 訂閱的 Callback
+ * @callback subscriptionCallback
+ * @param {string} subject - 訊息的 Subject
+ * @param {string} messageBody - 訊息的內容
+ */
+
+
+/**
+ *  NATS Streaming 客戶端
+ */
 export default class NATSStreamingClient {
   constructor(options = {}) {
     const {logger} = {
@@ -79,12 +90,6 @@ export default class NATSStreamingClient {
     this.logger.log(`發布訊息 (長度： ${messageBody.length}，開頭為： ${this._getSummarizedMessage(messageBody)}) 至頻道 ${channel}`)
   }
 
-  /**
-   * 訂閱的 Callback
-   * @callback subscriptionCallback
-   * @param {string} subject - 訊息的 Subject
-   * @param {string} messageBody - 訊息的內容
-   */
 
   /**
    * 訂閱 Channel

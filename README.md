@@ -11,9 +11,15 @@ npm install paji-sdk
 ## 使用
 
 ```javascript
+// 引用模組
 import {utils} from 'paji-sdk'
 
 const id = utils.generateRandomString()
+
+// 直接引用子模組
+import {generateRandomString} from 'paji-sdk/utils'
+
+const id = generateRandomString()
 ```
 
 ## 功能模組
