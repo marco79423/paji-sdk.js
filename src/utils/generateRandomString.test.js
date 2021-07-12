@@ -25,6 +25,6 @@ describe('generateRandomString', () => {
   })
 
   it('指定字符集，會根據指定字符集回傳亂數', () => {
-    expect(generateRandomString({length: 3})).toBe('GMS')
+    expect(generateRandomString({charset: 'ABC'})).toBe('AAABBB')
   })
 })

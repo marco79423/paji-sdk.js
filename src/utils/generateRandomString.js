@@ -3,11 +3,12 @@ const DEFAULT_CHARSET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012
 
 /**
  * 產生随機亂數
- * @param {number} config.length - 字串長度
- * @param {number} config.charset - 字元集
+ * @param {object=} config - 參數設定
+ * @param {number=} config.length - 字串長度
+ * @param {number=} config.charset - 字元集
  * @returns {string}
  */
-export default function generateRandomString(config) {
+export default function generateRandomString(config = {}) {
   const {length = DEFAULT_LENGTH, charset = DEFAULT_CHARSET} = config || {}
 
   let result = ''
