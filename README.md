@@ -17,7 +17,7 @@ import {utils} from 'paji-sdk'
 const id = utils.generateRandomString()
 
 // 直接引用子模組
-import {generateRandomString} from 'paji-sdk/utils'
+import {generateRandomString} from 'paji-sdk/dist/utils'
 
 const id = generateRandomString()
 ```
