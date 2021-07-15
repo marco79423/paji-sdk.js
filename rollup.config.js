@@ -3,20 +3,14 @@ import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
 import {DEFAULT_EXTENSIONS} from '@babel/core'
 
+import pkg from './package.json'
+
 export default [
   {
-    input: {
-      index: 'src/index.ts',
-      elements: 'src/elements/index.ts',
-      nats: 'src/nats/index.ts',
-      utils: 'src/utils/index.ts',
-    },
+    input: 'src/index.ts',
     output: [
-      {
-        dir: 'dist',
-        format: 'esm',
-        sourcemap: true
-      },
+      {file: pkg.main, format: 'umd', name: 'paji-sdk', sourcemap: true, esModule: false},
+      {file: pkg.module, format: 'esm', sourcemap: true},
     ],
 
     plugins: [
@@ -34,15 +28,10 @@ export default [
     ]
   },
   {
-    input: {
-      index: 'src/index.ts',
-      elements: 'src/elements/index.ts',
-      nats: 'src/nats/index.ts',
-      utils: 'src/utils/index.ts',
-    },
+    input: 'src/index.ts',
     output: [
       {
-        dir: 'dist',
+        file: pkg.typings,
         format: 'esm'
       }
     ],
