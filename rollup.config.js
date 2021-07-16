@@ -13,9 +13,14 @@ export default [
       {file: pkg.module, format: 'esm', sourcemap: true},
     ],
 
+    // 根據 https://github.com/rollup/plugins/tree/master/packages/babel 的說明
+    external: [
+      /@babel\/runtime/,
+    ],
     plugins: [
       babel({
-        babelHelpers: 'bundled',
+        // 根據 https://github.com/rollup/plugins/tree/master/packages/babel 的說明
+        babelHelpers: 'runtime',
       }),
       typescript(),
     ]
