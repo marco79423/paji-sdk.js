@@ -16,15 +16,8 @@ export default [
     plugins: [
       babel({
         babelHelpers: 'bundled',
-        extensions: [
-          ...DEFAULT_EXTENSIONS,
-          '.ts',
-          '.tsx'
-        ]
       }),
-      typescript({
-        declaration: true,
-      }),
+      typescript(),
     ]
   },
   {
