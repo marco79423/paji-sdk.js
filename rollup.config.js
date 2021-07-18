@@ -1,6 +1,5 @@
 import babel from '@rollup/plugin-babel'
 import typescript from '@rollup/plugin-typescript'
-import nodePolyfills from 'rollup-plugin-node-polyfills'
 import dts from 'rollup-plugin-dts'
 
 import pkg from './package.json'
@@ -24,9 +23,6 @@ export default [
         babelHelpers: 'runtime',
       }),
       typescript(),
-
-      // 確保可以引用 node 內建的
-      nodePolyfills()
     ]
   },
   {
