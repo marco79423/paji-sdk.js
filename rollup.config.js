@@ -1,7 +1,7 @@
 import babel from '@rollup/plugin-babel'
 import typescript from '@rollup/plugin-typescript'
+import nodePolyfills from 'rollup-plugin-node-polyfills'
 import dts from 'rollup-plugin-dts'
-import {DEFAULT_EXTENSIONS} from '@babel/core'
 
 import pkg from './package.json'
 
@@ -17,12 +17,16 @@ export default [
     external: [
       /@babel\/runtime/,
     ],
+    // rollup plugins 的順序是從上到下
     plugins: [
       babel({
         // 根據 https://github.com/rollup/plugins/tree/master/packages/babel 的說明
         babelHelpers: 'runtime',
       }),
       typescript(),
+
+      // 確保可以引用 node 內建的
+      nodePolyfills()
     ]
   },
   {
