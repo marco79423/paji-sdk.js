@@ -1,8 +1,7 @@
 import React from 'react'
-import dynamic from 'next/dynamic'
 
+import ReactJson from 'react-json-view'
 
-const ReactJson = dynamic(() => import('react-json-view'), {ssr: false})
 
 export default function JSONView({data}) {
   return (

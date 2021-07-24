@@ -12,9 +12,7 @@ npm install paji-sdk
 
 ```javascript
 // 引用模組
-import {utils} from 'paji-sdk'
-
-const id = utils.generateRandomString()
+import generateRandomString from 'paji-sdk/dist/utils/generateRandomString'
 
 const id = generateRandomString()
 ```
