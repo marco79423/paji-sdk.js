@@ -4,4 +4,3 @@ module.exports = {
   coverageDirectory: 'coverage',
   transform: {'\\.(js|ts)$': ['ts-jest']}
 }
-a
