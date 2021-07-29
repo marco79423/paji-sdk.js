@@ -1,4 +1,5 @@
 import {connect} from 'node-nats-streaming'
+import {generateRandomString} from '../utils'
 
 class Logger {
   log = console.log
@@ -103,32 +104,35 @@ export default class NATSStreamingClient {
       throw new Error('尚未連線到目標 NATS Streaming 服務器')
     }
 
-    this.subscriptions.set(channel, this.client.subscribe(channel, opts))
+    const subscriptionID = this._getSubscriptionID()
+    this.subscriptions.set(subscriptionID, this.client.subscribe(channel, opts))
     this.logger.log(`訂閱頻道 ${channel}`)
 
-    this.subscriptions.get(channel).on('message', (msg) => {
+    this.subscriptions.get(subscriptionID).on('message', (msg) => {
       const [subject, messageBody] = [msg.getSubject(), msg.getData()]
       callback(subject, messageBody)
       this.logger.log(`收到 ${subject} 的新訊息 (長度： ${messageBody.length}，開頭為： ${this._getSummarizedMessage(messageBody)})`)
     })
+
+    return subscriptionID
   }
 
   /**
    * 取消訂閱 Channel
-   * @param {string} channel - 訂閱的 Channel
+   * @param {string} subscriptionID - 訂閱的 ID
    * @returns {Promise}
    */
-  unsubscribe = async (channel) => {
+  unsubscribe = async (subscriptionID) => {
     if (!this.isReady) {
       return
     }
 
-    if (this.subscriptions.has(channel)) {
-      this.subscriptions.get(channel).unsubscribe()
-      this.subscriptions.delete(channel)
+    if (this.subscriptions.has(subscriptionID)) {
+      this.subscriptions.get(subscriptionID).unsubscribe()
+      this.subscriptions.delete(subscriptionID)
     }
 
-    this.logger.log(`取消訂閱頻道 ${channel}`)
+    this.logger.log(`取消訂閱 ${subscriptionID}`)
   }
 
   /**
@@ -153,6 +157,15 @@ export default class NATSStreamingClient {
       return `${messageBody.substring(0, length - 3)}...`
     } else {
       return messageBody
+    }
+  }
+
+  _getSubscriptionID = () => {
+    while (true) {
+      const id = generateRandomString()
+      if (!this.subscriptions.has(id)) {
+        return id
+      }
     }
   }
 }
