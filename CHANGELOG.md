@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [0.6.0] - 2021-07-29
+
+* 新增 invertColor 和 useWindowSize
+* 修改 NATSStreamingClient 的用法
+
 ## [0.5.1] - 2021-07-10
 
 * 支援 Typescript，新增型態支援
