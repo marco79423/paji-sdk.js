@@ -21,6 +21,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "nanoid": "^3.1.25",
     "nats": "^1.4.12",
     "node-nats-streaming": "^0.3.2",
     "react-json-view": "^1.21.3",
