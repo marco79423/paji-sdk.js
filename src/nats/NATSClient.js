@@ -14,7 +14,7 @@ const DEFAULT_OPTIONS = {
 
 /**
  * 訂閱的 Callback
- * @callback subscriptionCallback
+ * @callback natsSubscriptionCallback
  * @param {string} subject - 訊息的 Subject
  * @param {string} messageBody - 訊息的內容
  */
@@ -71,7 +71,7 @@ export default class NATSClient {
   /**
    * 訂閱 Channel
    * @param {string} channel - 要訂閱的 Channel (Channels are subjects clients send data to and consume from)
-   * @param {subscriptionCallback} callback - 要接收的訊息 callback
+   * @param {natsSubscriptionCallback} callback - 要接收的訊息 callback
    * @returns {Promise}
    */
   subscribe = async (channel, callback) => {

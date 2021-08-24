@@ -14,9 +14,10 @@ const DEFAULT_OPTIONS = {
 
 /**
  * 訂閱的 Callback
- * @callback subscriptionCallback
+ * @callback stanSubscriptionCallback
  * @param {string} subject - 訊息的 Subject
  * @param {string} messageBody - 訊息的內容
+ * @param {Date} info.timestamp - NATS 收到的時間
  */
 
 
@@ -96,7 +97,7 @@ export default class NATSStreamingClient {
   /**
    * 訂閱 Channel
    * @param {string} channel - 要訂閱的 Channel (Channels are subjects clients send data to and consume from)
-   * @param {subscriptionCallback} callback - 要接收的訊息 callback
+   * @param {stanSubscriptionCallback} callback - 要接收的訊息 callback
    * @param {object} opts - 訂閱的設定 (使用 getSubscriptionOptions 取得)
    * @returns {Promise}
    */
@@ -111,7 +112,10 @@ export default class NATSStreamingClient {
 
     this.subscriptions.get(subscriptionID).on('message', (msg) => {
       const [subject, messageBody] = [msg.getSubject(), msg.getData()]
-      callback(subject, messageBody)
+      const info = {
+        timestamp: msg.getTimestamp(),
+      }
+      callback(subject, messageBody, info)
       this.logger.log(`收到 ${subject} 的新訊息 (長度： ${messageBody.length}，開頭為： ${this._getSummarizedMessage(messageBody)})`)
     })
 
