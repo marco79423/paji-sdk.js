@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.7.0] - 2021-08-24
+
+* 調整 NATS Streaming 的用法
+
 ## [0.6.0] - 2021-07-29
 
 * 新增 invertColor 和 useWindowSize
