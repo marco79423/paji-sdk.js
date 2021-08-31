@@ -4,6 +4,7 @@
     // 編譯目標
     "target": "es6",           // 當前瀏覽器應該都支援到 ES6 (以後可能會變)
     "module": "esnext",        // 輸出的模組形式
+    "moduleResolution": "node",
 
     // 輸入輸出
     "rootDir": "src",          // TS 所有要編譯的原始碼都必須要在 rootDir 目錄內

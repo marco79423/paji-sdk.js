@@ -35,7 +35,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          package: package.json
-          token: ${{ secrets.NPM_TOKEN }}
+      - name: Publish package
+        run: "lerna publish --yes --message 'chore: release new versions'"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

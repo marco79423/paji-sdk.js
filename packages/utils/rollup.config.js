@@ -1,6 +1,5 @@
 import babel from '@rollup/plugin-babel'
-import typescript from '@rollup/plugin-typescript'
-import dts from 'rollup-plugin-dts'
+import typescript from 'rollup-plugin-typescript2'
 
 import pkg from './package.json'
 
@@ -24,17 +23,5 @@ export default [
       }),
       typescript(),
     ]
-  },
-  {
-    input: 'src/index.ts',
-    output: [
-      {
-        file: pkg.typings,
-        format: 'esm'
-      }
-    ],
-    plugins: [
-      dts(),
-    ],
   },
 ]
