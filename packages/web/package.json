@@ -4,6 +4,9 @@
   "description": "JavaScript 開發工具包",
   "author": "兩大類 <marco79423@gmail.com>",
   "homepage": "https://github.com/marco79423/paji-sdk.js#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marco79423/paji-sdk.js.git"
@@ -33,5 +36,6 @@
   },
   "jest": {
     "preset": "rollup-jest"
-  }
+  },
+  "gitHead": "edcfe4701d8dab6ae4388d298de712f2d420cdc6"
 }
