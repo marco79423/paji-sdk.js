@@ -18,10 +18,10 @@ export default [
     ],
     // rollup plugins 的順序是從上到下
     plugins: [
-      // babel({
-      //   // 根據 https://github.com/rollup/plugins/tree/master/packages/babel 的說明
-      //   babelHelpers: 'runtime',
-      // }),
+      babel({
+        // 根據 https://github.com/rollup/plugins/tree/master/packages/babel 的說明
+        babelHelpers: 'runtime',
+      }),
       typescript(),
     ]
   },

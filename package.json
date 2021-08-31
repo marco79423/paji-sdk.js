@@ -1,6 +1,9 @@
 {
   "name": "paji-sdk",
   "private": true,
+  "scripts": {
+    "test:coverage": "lerna run --stream test:coverage"
+  },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
