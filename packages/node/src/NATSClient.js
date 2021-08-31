@@ -1,6 +1,6 @@
 import {connect, StringCodec} from 'nats'
 
-import {generateID} from '../utils'
+import {generateID} from '@paji-sdk/utils'
 
 class Logger {
   log = console.log
