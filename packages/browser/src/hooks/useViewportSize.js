@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import React from 'react'
 
 
 /**
@@ -13,7 +13,7 @@ import {useEffect, useState} from 'react'
  * @returns {ViewportSize} size - 顯示區域大小的資訊
  */
 export default function useViewportSize() {
-  const [size, setSize] = useState({width: 0, height: 0, ready: false})
+  const [size, setSize] = React.useState({width: 0, height: 0, ready: false})
 
   function updateSize() {
     setSize({
@@ -23,7 +23,7 @@ export default function useViewportSize() {
     })
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     updateSize()
 
     window.addEventListener('resize', updateSize)
