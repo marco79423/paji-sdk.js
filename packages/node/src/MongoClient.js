@@ -64,7 +64,7 @@ export default class MongoClient {
    * @param {string} collection - Collection 名稱
    * @param {string} query - Query
    */
-  findOne = async ({database, collection, query}) => {
+  findOne = async (database, collection, query) => {
     if (!this.isConnected) {
       throw new Error('尚未連線到 Mongo 服務器')
     }
