@@ -28,12 +28,12 @@ export default class RedisClusterClient {
 
   /**
    * 連線到 Redis Cluster 服務器
-   * @param {string[]}  connInfo.nodes - 連到 Redis Cluster 服務器的節點
-   * @param {string}  connInfo.password - 連到服務器使用的密碼
+   * @param {string[]}  connectInfo.nodes - 連到 Redis Cluster 服務器的節點
+   * @param {string}  connectInfo.password - 連到服務器使用的密碼
    * @returns {Promise}
    */
-  connect = async (connInfo) => {
-    const {nodes, password} = connInfo
+  connect = async (connectInfo) => {
+    const {nodes, password} = connectInfo
 
     this.clients = nodes.map(node => new Redis({...node, password}))
     this.clusterClient = new Redis.Cluster(nodes, {

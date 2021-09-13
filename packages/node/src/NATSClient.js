@@ -38,6 +38,7 @@ export default class NATSClient {
 
   /**
    * 連線到 NATS  服務器
+   * @param {object}  connInfo
    * @param {string}  connInfo.url - 連到 NATS  服務器的路由 (如： nats://localhost:4222)
    * @returns {Promise}
    */

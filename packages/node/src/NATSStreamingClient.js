@@ -39,14 +39,14 @@ export default class NATSStreamingClient {
 
   /**
    * 連線到 NATS Streaming 服務器
-   * @param {string}  connInfo.url - 連到 NATS Streaming 服務器的路由 (如： nats://localhost:4222)
-   * @param {string}  connInfo.clusterID - 連到服務器使用的 Cluster ID
-   * @param {string}  connInfo.clientID - 連到服務器使用的 Client ID，要確保每個連到 NATS Streaming 服務器的客戶端都不相同
-   * @param {string}  connInfo.token - 連到服務器使用的 Token
+   * @param {string}  connectInfo.url - 連到 NATS Streaming 服務器的路由 (如： nats://localhost:4222)
+   * @param {string}  connectInfo.clusterID - 連到服務器使用的 Cluster ID
+   * @param {string}  connectInfo.clientID - 連到服務器使用的 Client ID，要確保每個連到 NATS Streaming 服務器的客戶端都不相同
+   * @param {string}  connectInfo.token - 連到服務器使用的 Token
    * @returns {Promise}
    */
-  connect = async (connInfo) => {
-    const {url, clusterID, clientID, token} = connInfo
+  connect = async (connectInfo) => {
+    const {url, clusterID, clientID, token} = connectInfo
 
     this.client = connect(clusterID, clientID, {
       url: url,

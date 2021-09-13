@@ -27,10 +27,12 @@ export default class MongoClient {
 
   /**
    * 連線到 Mongo 服務器
-   * @param {string}  uri - 連到 Mongo 服務器
+   * @param {string}  connectInfo.uri - Mongo 服務器的 URI
    * @returns {Promise}
    */
-  connect = async ({uri}) => {
+  connect = async (connectInfo) => {
+    const {uri} = connectInfo
+
     this.client = new InternalMongoClient(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -58,9 +60,9 @@ export default class MongoClient {
 
   /**
    * 根據 query 取得一筆資料
-   * @param {string}  database - 資料庫名稱
-   * @param {string}  collection - Collection 名稱
-   * @param {string}  query - Query
+   * @param {string} database - 資料庫名稱
+   * @param {string} collection - Collection 名稱
+   * @param {string} query - Query
    */
   findOne = async ({database, collection, query}) => {
     if (!this.isConnected) {
@@ -72,11 +74,11 @@ export default class MongoClient {
 
   /**
    * 根據 query 取得資料
-   * @param {string}  database - 資料庫名稱
-   * @param {string}  collection - Collection 名稱
-   * @param {string}  query - Query
+   * @param {string} database - 資料庫名稱
+   * @param {string} collection - Collection 名稱
+   * @param {string} query - Query
    */
-  find = async ({database, collection, query}) => {
+  find = async (database, collection, query) => {
     if (!this.isConnected) {
       throw new Error('尚未連線到 Mongo 服務器')
     }
