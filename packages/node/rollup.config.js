@@ -14,6 +14,9 @@ export default [
     // 根據 https://github.com/rollup/plugins/tree/master/packages/babel 的說明
     external: [
       /@babel\/runtime/,
+      /ioredis/,
+      /nats/,
+      /node-nats-streaming/,
     ],
     // rollup plugins 的順序是從上到下
     plugins: [
