@@ -33,7 +33,7 @@ export default class NATSStreamingClient {
 
     this.logger = logger
     this.client = null
-    this.isReady = false
+    this.isConnected = false
     this.subscriptions = new Map()
   }
 
@@ -55,16 +55,34 @@ export default class NATSStreamingClient {
 
     await new Promise(resolve => {
       this.client.on('connect', () => {
-        this.isReady = true
+        this.isConnected = true
         this.logger.log(`連線到 NATS Streaming 服務器 (${url})`)
         resolve()
       })
 
       this.client.on('close', () => {
-        this.isReady = false
+        this.isConnected = false
         this.logger.log('與 NATS Streaming 服務器連線的已關閉')
       })
     })
+  }
+
+  /**
+   * 取消連線到 NATS Streaming 服務器
+   * @returns {Promise}
+   */
+  disconnect = async () => {
+    if (!this.isConnected) {
+      return
+    }
+
+    this.logger.log(`取消連線到 NATS Streaming 服務器`)
+    for (const channel of this.subscriptions.keys()) {
+      await this.unsubscribe(channel)
+    }
+    await this.client.close()
+    this.client = null
+    this.isConnected = false
   }
 
   /**
@@ -85,7 +103,7 @@ export default class NATSStreamingClient {
    * @returns {Promise}
    */
   publish = async (channel, messageBody) => {
-    if (!this.isReady) {
+    if (!this.isConnected) {
       throw new Error('尚未連線到目標 NATS Streaming 服務器')
     }
 
@@ -102,7 +120,7 @@ export default class NATSStreamingClient {
    * @returns {Promise}
    */
   subscribe = async (channel, callback, opts = undefined) => {
-    if (!this.isReady) {
+    if (!this.isConnected) {
       throw new Error('尚未連線到目標 NATS Streaming 服務器')
     }
 
@@ -128,7 +146,7 @@ export default class NATSStreamingClient {
    * @returns {Promise}
    */
   unsubscribe = async (subscriptionID) => {
-    if (!this.isReady) {
+    if (!this.isConnected) {
       return
     }
 
@@ -140,22 +158,6 @@ export default class NATSStreamingClient {
     this.logger.log(`取消訂閱 ${subscriptionID}`)
   }
 
-  /**
-   * 取消連線到 NATS Streaming 服務器
-   * @returns {Promise}
-   */
-  disconnect = async () => {
-    if (!this.isReady) {
-      return
-    }
-
-    this.logger.log(`取消連線到 NATS Streaming 服務器`)
-    for (const channel of this.subscriptions.keys()) {
-      await this.unsubscribe(channel)
-    }
-    await this.client.close()
-    this.client = null
-  }
 
   _getSummarizedMessage = (messageBody, length = 20) => {
     if (messageBody.length > length) {

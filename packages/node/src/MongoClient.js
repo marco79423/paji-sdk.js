@@ -23,7 +23,6 @@ export default class MongoClient {
     this.logger = logger
     this.client = null
     this.isConnected = false
-    this.isReady = false
   }
 
   /**
@@ -53,6 +52,7 @@ export default class MongoClient {
     }
 
     await this.client.close()
+    this.isConnected = false
     this.logger.log(`取消連線到 Mongo 服務器成功`)
   }
 

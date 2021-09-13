@@ -52,6 +52,25 @@ export default class NATSClient {
   }
 
   /**
+   * 取消連線到 NATS 服務器
+   * @returns {Promise}
+   */
+  disconnect = async () => {
+    if (!this.isConnected) {
+      return
+    }
+
+    this.logger.log(`取消連線到 NATS 服務器`)
+    for (const channel of this.subscriptions.keys()) {
+      await this.unsubscribe(channel)
+    }
+    await this.client.close()
+    this.client = null
+    this.isConnected = false
+    this.logger.log('與 NATS 服務器連線的已關閉')
+  }
+
+  /**
    * 發送訊息
    * @param {string} channel - 要訂閱的 Channel (Channels are subjects clients send data to and consume from)
    * @param {string} messageBody - 要傳的訊息
@@ -108,25 +127,6 @@ export default class NATSClient {
     }
 
     this.logger.log(`取消訂閱 ${subscriptionID}`)
-  }
-
-  /**
-   * 取消連線到 NATS 服務器
-   * @returns {Promise}
-   */
-  disconnect = async () => {
-    if (!this.isConnected) {
-      return
-    }
-
-    this.logger.log(`取消連線到 NATS 服務器`)
-    for (const channel of this.subscriptions.keys()) {
-      await this.unsubscribe(channel)
-    }
-    await this.client.close()
-    this.client = null
-
-    this.logger.log('與 NATS 服務器連線的已關閉')
   }
 
   _getSummarizedMessage = (messageBody, length = 20) => {

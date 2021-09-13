@@ -23,7 +23,7 @@ export default class RedisClusterClient {
     this.logger = logger
     this.clients = []
     this.clusterClient = null
-    this.isReady = false
+    this.isConnected = false
   }
 
   /**
@@ -42,7 +42,7 @@ export default class RedisClusterClient {
       }
     })
 
-    this.isReady = true
+    this.isConnected = true
     this.logger.log(`連線到 Redis Cluster 服務器成功`)
   }
 
@@ -51,7 +51,7 @@ export default class RedisClusterClient {
    * @returns {Promise}
    */
   disconnect = async () => {
-    if (!this.isReady) {
+    if (!this.isConnected) {
       return
     }
 
@@ -70,7 +70,7 @@ export default class RedisClusterClient {
    * @param {string} pattern
    */
   getKeys = async (pattern) => {
-    if (!this.isReady) {
+    if (!this.isConnected) {
       throw new Error('尚未連線到 Redis 服務器')
     }
 
@@ -88,7 +88,7 @@ export default class RedisClusterClient {
    * @return {Promise<string>}
    */
   get = async name => {
-    if (!this.isReady) {
+    if (!this.isConnected) {
       throw new Error('尚未連線到 Redis 服務器')
     }
 
@@ -101,7 +101,7 @@ export default class RedisClusterClient {
    * @return {Promise<Buffer>}
    */
   getBuffer = async name => {
-    if (!this.isReady) {
+    if (!this.isConnected) {
       throw new Error('尚未連線到 Redis 服務器')
     }
 
@@ -114,7 +114,7 @@ export default class RedisClusterClient {
    * @return {Promise<*>}
    */
   hgetall = async name => {
-    if (!this.isReady) {
+    if (!this.isConnected) {
       throw new Error('尚未連線到 Redis 服務器')
     }
 
