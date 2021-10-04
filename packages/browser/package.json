@@ -24,7 +24,9 @@
     "pretest": "npm run build",
     "test": "jest --passWithNoTests",
     "test:coverage": "jest --coverage --passWithNoTests",
-    "test:watch": "jest --watch --notify"
+    "test:watch": "jest --watch --notify",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "peerDependencies": {
     "react": "^17.0.2",
@@ -32,11 +34,20 @@
   },
   "dependencies": {
     "@paji-sdk/utils": "^0.11.0",
+    "iframe-resizer-react": "^1.1.0",
+    "prop-types": "^15.7.2",
     "react-json-view": "^1.21.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/react": "^6.3.8",
+    "babel-loader": "^8.2.2",
     "jest": "^27.1.0",
     "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "rollup": "^2.56.3"
   },
   "jest": {
