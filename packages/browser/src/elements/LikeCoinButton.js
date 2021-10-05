@@ -4,14 +4,17 @@ import IframeResizer from 'iframe-resizer-react'
 
 /**
  * LikCoin 的按鈕
- * @param {object} data -  JSON 內容
+ * @param {object} options
+ * @param {string} options.creatorLikeID - 創作者的 Liker ID
+ * @param {string} options.url - 資料的 URL
+ * @param {object} options.style - CSS Style
  * @returns {JSX.Element}
  */
-function LikeCoinButton({userId, url, style = {}}) {
+function LikeCoinButton({creatorLikeID, url, style = {}}) {
   const currentUrl = url || window.location.href
   return (
     <IframeResizer
-      src={`//button.like.co/in/embed/${userId}/button?referrer=${currentUrl}`}
+      src={`//button.like.co/in/embed/${creatorLikeID}/button?referrer=${currentUrl}`}
       inPageLinks
       checkOrigin={['//button.like.co']}
       style={{border: 0, margin: 0, ...style}}
@@ -20,7 +23,7 @@ function LikeCoinButton({userId, url, style = {}}) {
 }
 
 LikeCoinButton.propTypes = {
-  userId: PropTypes.string.isRequired,
+  creatorLikeID: PropTypes.string.isRequired,
   url: PropTypes.string,
   style: PropTypes.object,
 }
