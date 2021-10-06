@@ -74,12 +74,10 @@ export default class RedisClusterClient {
       throw new Error('尚未連線到 Redis 服務器')
     }
 
-    const allKeys = []
-    for (const client of this.clients) {
-      const keys = await client.keys(pattern)
-      allKeys.push(...keys)
-    }
-    return allKeys
+    const keysArray = await Promise
+      .all(this.clients.map(client => client.keys(pattern)))
+
+    return [].concat(...keysArray)
   }
 
   /**
