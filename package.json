@@ -2,6 +2,8 @@
   "name": "paji-sdk",
   "private": true,
   "scripts": {
+    "dev": "lerna run --parallel dev",
+    "test:watch": "lerna run --parallel test:watch",
     "build": "lerna run --stream build",
     "test:coverage": "lerna run --stream test:coverage"
   },
