@@ -27,7 +27,7 @@
     "test:watch": "jest --watch --notify"
   },
   "dependencies": {
-    "@paji-sdk/utils": "^0.13.0",
+    "@paji-sdk/utils": "^0.14.1",
     "ioredis": "^4.27.9",
     "mongodb": "^4.1.1",
     "nats": "^2.2.0",
