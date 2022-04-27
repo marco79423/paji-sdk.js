@@ -7,8 +7,8 @@ JavaScript 的開發工具包
 ```bash
 # Node 相關功能
 npm install @paji-sdk/node
-# Browser 相關功能
-npm install @paji-sdk/browser
+# Web 相關功能
+npm install @paji-sdk/web
 # JS 工具包
 npm install @paji-sdk/utils
 ```

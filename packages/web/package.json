@@ -1,5 +1,5 @@
 {
-  "name": "@paji-sdk/browser",
+  "name": "@paji-sdk/web",
   "version": "2.0.0",
   "description": "JavaScript 開發工具包",
   "author": "兩大類 <marco79423@gmail.com>",
