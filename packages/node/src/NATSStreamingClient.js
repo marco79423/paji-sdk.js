@@ -1,6 +1,6 @@
 import {connect} from 'node-nats-streaming'
 
-import {generateID} from '@paji-sdk/utils'
+import {generateId} from '@paji-sdk/utils'
 
 class Logger {
   log = console.log
@@ -169,7 +169,7 @@ export default class NATSStreamingClient {
 
   _getSubscriptionID = () => {
     while (true) {
-      const id = generateID()
+      const id = generateId()
       if (!this.subscriptions.has(id)) {
         return id
       }
