@@ -11,6 +11,9 @@ npm install @paji-sdk/node
 npm install @paji-sdk/web
 # JS 工具包
 npm install @paji-sdk/utils
+
+# Next 工具包
+npm install @paji-sdk/next-lib
 ```
 
 ## 開發相關
