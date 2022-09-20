@@ -29,8 +29,7 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
-    "react": "^17 || ^18",
-    "react-dom": "^17 || ^18"
+    "react": "^17 || ^18"
   },
   "dependencies": {
     "@paji-sdk/utils": "^3.0.1",
