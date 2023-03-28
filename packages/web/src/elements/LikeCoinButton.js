@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import IframeResizer from 'iframe-resizer-react'
 
 /**
@@ -20,12 +19,6 @@ function LikeCoinButton({creatorLikeID, url, style = {}}) {
       style={{border: 0, margin: 0, ...style}}
     />
   )
-}
-
-LikeCoinButton.propTypes = {
-  creatorLikeID: PropTypes.string.isRequired,
-  url: PropTypes.string,
-  style: PropTypes.object,
 }
 
 export default LikeCoinButton
