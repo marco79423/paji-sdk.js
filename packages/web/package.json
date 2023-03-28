@@ -1,6 +1,6 @@
 {
   "name": "@paji-sdk/web",
-  "version": "3.2.0-alpha.2",
+  "version": "3.2.0-alpha.3",
   "description": "JavaScript 開發工具包",
   "author": "兩大類 <marco79423@gmail.com>",
   "homepage": "https://github.com/marco79423/paji-sdk.js/blob/main/packages/browser/README.md",
@@ -32,7 +32,7 @@
     "react": "^17 || ^18"
   },
   "dependencies": {
-    "@paji-sdk/utils": "^3.0.1",
+    "@paji-sdk/utils": "^3.0.2-alpha.0",
     "ga-4-react": "^0.1.281",
     "iframe-resizer-react": "^1.1.0"
   },
