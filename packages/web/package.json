@@ -45,8 +45,5 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "jest": {
-    "preset": "rollup-jest"
-  },
   "gitHead": "edcfe4701d8dab6ae4388d298de712f2d420cdc6"
 }
