@@ -2,10 +2,10 @@ import React from 'react'
 
 /**
  * Toggle
- * @param initialValue 任意初始值
+ * @param defaultState 預設布林值
  */
-export default function useToggle(initialValue: any) {
-    const [value, setValue] = React.useState(initialValue)
+export default function useToggle(defaultState: boolean): [boolean, () => void] {
+    const [value, setValue] = React.useState(defaultState)
     const toggle = React.useCallback(() => {
         setValue(v => !v)
     }, [])
